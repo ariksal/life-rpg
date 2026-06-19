@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ⚔️ Life RPG
 
-## Getting Started
+Turn your real life into a role-playing game. Log real-world tasks — workouts, study sessions, habits — and an **AI game master (Claude)** scores them into XP, levels up your skills, and holds you accountable as skills *decay* when you neglect them.
 
-First, run the development server:
+> Built on Claude's API (`@anthropic-ai/sdk`), which does the scoring, validation, and coaching.
 
+## How it works
+- **Log a task** ("Ran 5km in 28 min") → Claude awards XP based on effort, applies a streak multiplier, and writes RPG flavor text.
+- **Level up skills** — Strength, Endurance, Discipline, Knowledge, Finance, Social, Creativity — each with its own XP and level.
+- **Skill decay** — neglect a skill and it starts losing XP, with warnings before it does. Consistency *is* the game.
+- **Quests** — set your own goals with XP rewards and due dates; complete them for big gains.
+- **Benchmarks with AI anti-cheat** — claim a real milestone (e.g. a 100 kg bench) and Claude checks whether it's plausible against your history before granting the level.
+- **AI daily plan** — Claude generates a motivating quest plan based on your weakest/decaying skills and active quests.
+- **Chronicle** — a full log of everything you've done.
+
+## Why I built it
+An experiment in whether game mechanics plus an LLM "game master" can make self-improvement genuinely sticky — and a real exercise in wiring Claude into a stateful app with structured JSON outputs and an anti-cheat validation step.
+
+## Tech stack
+- **Next.js 16** (App Router) + **React 19** + **TypeScript**
+- **Anthropic Claude** via `@anthropic-ai/sdk` (Claude Haiku 4.5) — task scoring, benchmark validation, daily planning
+- **SQLite** via `better-sqlite3` for persistence
+- API routes for character, quests, log, decay, benchmarks, and plan
+
+## Getting started
 ```bash
+npm install
+# add your Anthropic API key:
+echo "ANTHROPIC_API_KEY=sk-ant-..." > .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+Open http://localhost:3000.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Status
+🚧 Work in progress — the core loop (tasks → XP → levels → decay), quests, benchmarks, and AI planning are functional. Built solo by Arik Salinas as an AI-assisted project.
