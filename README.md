@@ -31,5 +31,8 @@ npm run dev
 ```
 Open http://localhost:3000.
 
+## How this was built
+A personal project I built by **directing AI** (Claude): I specified the game mechanics, designed the XP/decay and anti-cheat-validation systems, and verified the behavior — the model wrote the code. A hands-on exercise in wiring Claude into a real, stateful app.
+
 ## Status
-🚧 Work in progress — the core loop (tasks → XP → levels → decay), quests, benchmarks, and AI planning are functional. Built solo by Arik Salinas as an AI-assisted project.
+🚧 Work in progress — the core loop (tasks → XP → levels → decay), quests, benchmarks, and AI planning are functional.
